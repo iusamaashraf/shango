@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shango/constants/colors.dart';
 import 'package:shango/constants/images.dart';
+import 'package:shango/constants/validators.dart';
+import 'package:shango/views/pages/authentication/forgot_password_page.dart';
+import 'package:shango/views/pages/authentication/register_page.dart';
 
-class SignInPage extends StatelessWidget {
+import '../../widgets/primary_button.dart';
+import '../../widgets/primary_field.dart';
+import '../root/root_page.dart';
+
+class SignInPage extends StatelessWidget with ValidationMixin {
   SignInPage({super.key});
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -25,9 +32,21 @@ class SignInPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: Get.width * 0.1),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                'Login\nTo continue',
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
               PrimaryField(
+                textInputType: TextInputType.emailAddress,
                 controller: emailController,
                 prefixIcon: Icons.mail,
                 hintText: 'Email',
@@ -39,6 +58,7 @@ class SignInPage extends StatelessWidget {
                 height: Get.height * 0.015,
               ),
               PrimaryField(
+                textInputType: TextInputType.name,
                 controller: passwordController,
                 isObscure: true,
                 prefixIcon: Icons.lock,
@@ -50,7 +70,9 @@ class SignInPage extends StatelessWidget {
               Align(
                 alignment: Alignment.topRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(() => ForgotPasswordPage());
+                  },
                   child: Text(
                     'Forgot Password?',
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -63,20 +85,22 @@ class SignInPage extends StatelessWidget {
               SizedBox(
                 height: Get.height * 0.02,
               ),
+              PrimaryButton(
+                onTap: () => Get.to(() => RootPage()),
+                text: 'Login',
+              ),
               SizedBox(
-                width: Get.width,
-                height: Get.height * 0.06,
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                      ColorClass.primaryColor,
-                    ),
-                  ),
-                  onPressed: () {},
+                height: Get.height * 0.01,
+              ),
+              Align(
+                child: TextButton(
+                  onPressed: () {
+                    Get.to(() => RegisterPage());
+                  },
                   child: Text(
-                    'Login',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Colors.white,
+                    "Didn't have an account? Signup",
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: ColorClass.primaryColor,
                           fontWeight: FontWeight.w500,
                         ),
                   ),
@@ -84,54 +108,6 @@ class SignInPage extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class PrimaryField extends StatelessWidget {
-  const PrimaryField({
-    super.key,
-    required this.controller,
-    required this.prefixIcon,
-    this.isObscure = false,
-    required this.validator,
-    required this.hintText,
-  });
-  final TextEditingController controller;
-  final IconData prefixIcon;
-  final bool isObscure;
-  final String? Function(String?)? validator;
-  final String hintText;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // height: Get.height * 0.06,
-
-      decoration: BoxDecoration(
-        color: const Color(0xfff5f5f5),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: TextFormField(
-        validator: validator,
-        obscureText: isObscure,
-        controller: controller,
-        decoration: InputDecoration(
-          errorBorder: InputBorder.none,
-          border: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          prefixIcon: Icon(
-            prefixIcon,
-            color: Colors.grey.shade400,
-          ),
-          hintText: hintText,
-          hintStyle: Theme.of(context)
-              .textTheme
-              .bodyLarge!
-              .copyWith(color: Colors.grey),
         ),
       ),
     );
