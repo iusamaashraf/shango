@@ -7,15 +7,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Explore',
-          style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                color: Colors.black,
-                fontWeight: FontWeight.w500,
-              ),
-        ),
-      ],
+      children: [],
     );
   }
 }

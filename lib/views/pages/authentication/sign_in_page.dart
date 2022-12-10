@@ -95,7 +95,7 @@ class SignInPage extends StatelessWidget with ValidationMixin {
               Align(
                 child: TextButton(
                   onPressed: () {
-                    Get.to(() => RegisterPage());
+                    Get.to(() => const RegisterPage());
                   },
                   child: Text(
                     "Didn't have an account? Signup",

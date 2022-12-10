@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:shango/constants/colors.dart';
-import 'package:shango/constants/images.dart';
 import 'package:shango/views/pages/root/tabs/category/category_page.dart';
 import 'package:shango/views/pages/root/tabs/home/home_page.dart';
 import 'package:shango/views/pages/root/tabs/profile/profile_page.dart';
@@ -26,6 +24,7 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SizedBox(
