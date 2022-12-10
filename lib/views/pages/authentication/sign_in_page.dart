@@ -86,7 +86,7 @@ class SignInPage extends StatelessWidget with ValidationMixin {
                 height: Get.height * 0.02,
               ),
               PrimaryButton(
-                onTap: () => Get.to(() => RootPage()),
+                onTap: () => Get.to(() => const RootPage()),
                 text: 'Login',
               ),
               SizedBox(

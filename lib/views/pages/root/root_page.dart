@@ -16,10 +16,10 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
   int selectedIndex = 0;
   final List<Widget> _pages = [
-    HomePage(),
+    const HomePage(),
     CategoryPage(),
-    SearchPage(),
-    ProfilePage(),
+    const SearchPage(),
+    const ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {

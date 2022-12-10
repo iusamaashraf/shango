@@ -1,5 +1,3 @@
-import 'package:shango/constants/images.dart';
-
 class CategoryModel {
   String? imagePath;
   String? name;
